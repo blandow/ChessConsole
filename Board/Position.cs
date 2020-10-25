@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿
 
-namespace ChessConsole.Board
+namespace ChessConsole.board
 {
     class Position
     {
