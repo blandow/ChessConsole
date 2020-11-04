@@ -1,6 +1,6 @@
 ﻿
 
-namespace ChessConsole.board
+namespace board
 {
     class Position
     {

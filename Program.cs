@@ -1,6 +1,6 @@
 ﻿using System;
-using ChessConsole.board;
-using ChessConsole.chess;
+using board;
+using chess;
 
 namespace ChessConsole
 {
@@ -8,17 +8,24 @@ namespace ChessConsole
     {
         static void Main(string[] args)
         {
-            Board b = new Board(8, 8);
+            
             try
             {
+                ChessMatch b = new ChessMatch();
+                while (!b.end)
+                {
+                    Console.Clear();
 
-                b.PutPiece(new King(Color.black, b), new Position(0, 0));
-                b.PutPiece(new Tower(Color.black, b), new Position(1, 0));
-                b.PutPiece(new King(Color.black, b), new Position(2, 2));
-                b.PutPiece(new Tower(Color.black, b), new Position(4, 3));
+                    Scream.PrintBoard(b.board);
+                
+                    Console.Write("\nOrigen:");
+                    Position origin = Scream.ReadChessPos().ToPosition();
 
-                Scream.PrintBoard(b);
+                    Console.Write("Destino:");
+                    Position destiny = Scream.ReadChessPos().ToPosition();
 
+                    b.executeMov(origin, destiny);
+                }
             }
             catch (BoardException e)
             {

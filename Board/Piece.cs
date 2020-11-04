@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ChessConsole.board
+namespace board
 {
     class Piece
     {
@@ -17,6 +17,11 @@ namespace ChessConsole.board
             PieceColor = pieceColor;
             PieceBoard = pieceBoard;
             QteMoviment = 0;
+        }
+
+        public void movIncrement()
+        {
+            QteMoviment++;
         }
 
     }

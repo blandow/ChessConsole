@@ -1,9 +1,7 @@
-﻿using ChessConsole.board;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using board;
 
-namespace ChessConsole.chess
+
+namespace chess
 {
     class King : Piece
     {

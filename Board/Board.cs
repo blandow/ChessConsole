@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml;
 
-namespace ChessConsole.board
+namespace board
 {
     class Board
     {
@@ -37,6 +37,19 @@ namespace ChessConsole.board
             }
             Pieces[pos.Line, pos.Column] = p;
             p.PiecePos = pos;
+        }
+
+        public Piece removePiece(Position pos)
+        {
+            if (GetPiece(pos) == null)
+            {
+                return null;
+            }
+            Piece auxPiece = GetPiece(pos);
+
+            Pieces[pos.Line,pos.Column] = null;
+
+            return auxPiece;
         }
 
         public bool isPosition(Position pos)

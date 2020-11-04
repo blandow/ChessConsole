@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ChessConsole.board
+namespace board
 {
     class BoardException : Exception
     {
