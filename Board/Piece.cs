@@ -4,7 +4,7 @@ using System.Text;
 
 namespace board
 {
-    class Piece
+    abstract class Piece
     {
         public Position PiecePos { get; set; }
         public Color PieceColor { get; protected set; }
@@ -23,6 +23,33 @@ namespace board
         {
             QteMoviment++;
         }
+        public void movDecrement()
+        {
+            QteMoviment--;
+        }
 
+        public bool isPossibleMov()
+        {
+            bool[,] mat = possibleMov();
+
+            
+            for (int i=0; i<PieceBoard.Lines;i++)
+            {
+                for (int j = 0; j < PieceBoard.Lines; j++)
+                {
+                    if (mat[i, j])
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+        public bool canMoveToPosition(Position destiny)
+        {
+            return possibleMov()[destiny.Line, destiny.Column];
+        }
+
+        public abstract bool[,] possibleMov(); 
     }
 }

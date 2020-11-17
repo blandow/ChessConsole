@@ -8,29 +8,55 @@ namespace ChessConsole
     {
         static void Main(string[] args)
         {
-            
             try
             {
-                ChessMatch b = new ChessMatch();
-                while (!b.end)
+                ChessMatch match = new ChessMatch();
+
+
+                while (!match.end)
                 {
-                    Console.Clear();
+                    try
+                    {
+                        Console.Clear();
 
-                    Scream.PrintBoard(b.board);
-                
-                    Console.Write("\nOrigen:");
-                    Position origin = Scream.ReadChessPos().ToPosition();
+                        
+                        Scream.printMatch(match);
+                        Console.Write("\nOrigen:");
 
-                    Console.Write("Destino:");
-                    Position destiny = Scream.ReadChessPos().ToPosition();
+                        Position origin = Scream.ReadChessPos().ToPosition();
+                        
+                        match.validOrigin(origin);
 
-                    b.executeMov(origin, destiny);
+                        bool[,] possiblePos = match.board.GetPiece(origin).possibleMov();
+
+                        Console.Clear();
+
+                        Scream.PrintBoard(match.board, possiblePos);
+
+
+                        Console.Write("Destino:");
+                        Position destiny = Scream.ReadChessPos().ToPosition();
+                        
+                        match.validDestiny(origin, destiny);
+
+                        match.accomplishMov(origin, destiny);
+                    }
+                    catch (BoardException e)
+                    {
+                        Console.WriteLine(e.Message);
+                        Console.ReadLine();
+                    }
                 }
+                Console.Clear();
+                Scream.printMatch(match);
+               
             }
             catch (BoardException e)
             {
                 Console.WriteLine(e.Message);
             }
+
+
         }
     }
 }
