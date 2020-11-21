@@ -47,9 +47,12 @@ namespace board
         }
         public bool canMoveToPosition(Position destiny)
         {
+            if (!PieceBoard.isPosition(destiny))
+            {
+                throw new BoardException("please insert a valid position!");
+            }
             return possibleMov()[destiny.Line, destiny.Column];
         }
-
         public abstract bool[,] possibleMov(); 
     }
 }

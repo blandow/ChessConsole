@@ -238,17 +238,48 @@ namespace chess
 
         private void placingPiece()
         {
-            putNewPieces('f', 1, new Tower(Color.white, board));
-            putNewPieces('b', 2, new Tower(Color.white, board));
-            putNewPieces('d', 1, new Tower(Color.white, board));
-            putNewPieces('b', 1, new Tower(Color.white, board));
-            putNewPieces('a', 1, new King(Color.white, board));
+            //White Pieces
+            
+            //pawn
+            putNewPieces('a', 2, new Pawn(Color.white, board));
+            putNewPieces('b', 2, new Pawn(Color.white, board));
+            putNewPieces('c', 2, new Pawn(Color.white, board));
+            putNewPieces('d', 2, new Pawn(Color.white, board));
+            putNewPieces('e', 2, new Pawn(Color.white, board));
+            putNewPieces('f', 2, new Pawn(Color.white, board));
+            putNewPieces('g', 2, new Pawn(Color.white, board));
+            putNewPieces('h', 2, new Pawn(Color.white, board));
+            //other
+            putNewPieces('a', 1, new Tower(Color.white, board));
+            putNewPieces('b', 1, new Horse(Color.white, board));
+            putNewPieces('c', 1, new Bishop(Color.white, board));
+            putNewPieces('d', 1, new King(Color.white, board));
+            putNewPieces('e', 1, new Queen(Color.white, board));
+            putNewPieces('f', 1, new Bishop(Color.white, board));
+            putNewPieces('g', 1, new Horse(Color.white, board));
+            putNewPieces('h', 1, new Tower(Color.white, board));
 
-            putNewPieces('c', 8, new Tower(Color.black, board));
-            putNewPieces('d', 8, new Tower(Color.black, board));
-            putNewPieces('d', 7, new Tower(Color.black, board));
-            putNewPieces('f', 7, new Tower(Color.black, board));
-            putNewPieces('e', 8, new King(Color.black, board));
+            //black Pieces
+            
+            //pawn
+            putNewPieces('a', 7, new Pawn(Color.black, board));
+            putNewPieces('b', 7, new Pawn(Color.black, board));
+            putNewPieces('c', 7, new Pawn(Color.black, board));
+            putNewPieces('d', 7, new Pawn(Color.black, board));
+            putNewPieces('e', 7, new Pawn(Color.black, board));
+            putNewPieces('f', 7, new Pawn(Color.black, board));
+            putNewPieces('g', 7, new Pawn(Color.black, board));
+            putNewPieces('h', 7, new Pawn(Color.black, board));
+            
+            //other
+            putNewPieces('a', 8, new Tower(Color.black, board));
+            putNewPieces('b', 8, new Horse(Color.black, board));
+            putNewPieces('c', 8, new Bishop(Color.black, board));
+            putNewPieces('d', 8, new King(Color.black, board));
+            putNewPieces('e', 8, new Queen(Color.black, board));
+            putNewPieces('f', 8, new Bishop(Color.black, board));
+            putNewPieces('g', 8, new Horse(Color.black, board));
+            putNewPieces('h', 8, new Tower(Color.black, board));
 
         }
 

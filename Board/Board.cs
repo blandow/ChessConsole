@@ -25,6 +25,10 @@ namespace board
 
         public Piece GetPiece(Position pos)
         {
+            if (!isPosition(pos))
+            {
+                throw new BoardException("please insert a valid position");
+            }
             return Pieces[pos.Line, pos.Column];
         }
         
