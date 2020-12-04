@@ -5,15 +5,20 @@ namespace chess
 {
     class King : Piece
     {
-        public King(Color color, Board board) : base(color, board)
+        private ChessMatch KingMatch;
+        public King(Color color, Board board, ChessMatch match) : base(color, board)
         {
-
+            KingMatch = match;
         }
         public override string ToString()
         {
             return "R ";
         }
-
+        private bool isTowerRoque(Position pos)
+        {
+            Piece p = PieceBoard.GetPiece(pos);
+            return p != null && p is Tower && p.PieceColor == this.PieceColor && p.QteMoviment == 0;
+        }
         private bool canMov(Position p)
         {
             Piece aux = this.PieceBoard.GetPiece(p);
@@ -40,7 +45,32 @@ namespace chess
                     }
                 }
             }
+            //#expessial movies
+            if(QteMoviment == 0 && !KingMatch.adversaryCheck)
+            {
+                Position posT = new Position(PiecePos.Line, PiecePos.Column - 3);
+                Position posT2 = new Position(PiecePos.Line, PiecePos.Column + 4);
+                if (isTowerRoque(posT))
+                {
+                    Position p1 = new Position(PiecePos.Line, PiecePos.Column - 1);
+                    Position p2 = new Position(PiecePos.Line, PiecePos.Column - 2);
+                    if(PieceBoard.GetPiece(p1) == null && PieceBoard.GetPiece(p2) == null)
+                    {
+                        mat[PiecePos.Line, PiecePos.Column - 2] = true;
+                    }
+                }
+                if (isTowerRoque(posT2))
+                {
+                    Position p1 = new Position(PiecePos.Line, PiecePos.Column + 1);
+                    Position p2 = new Position(PiecePos.Line, PiecePos.Column + 2);
+                    Position p3 = new Position(PiecePos.Line, PiecePos.Column + 3);
+                    if (PieceBoard.GetPiece(p1) == null && PieceBoard.GetPiece(p2) == null && PieceBoard.GetPiece(p3) == null)
+                    {
+                        mat[PiecePos.Line, PiecePos.Column + 2] = true;
+                    }
+                }
 
+            }
             return mat;
         }
 
